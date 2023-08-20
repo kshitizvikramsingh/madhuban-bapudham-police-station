@@ -1,0 +1,49 @@
+body{
+  text-align: center;
+  
+  color: aliceblue;
+  background: linear-gradient(-45deg, #c7a40b, #e73c7e, #23a6d5, #23d5ab, rgb(189, 189, 6));
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
+}
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+.title{
+  color: white;
+}
+
+a{
+  color: aliceblue;
+}
+
+.column{
+background-color: rgb(10, 109, 48);
+}
+#logos{
+  text-align: center;
+  display: inline-block;
+  margin-bottom: 50px;
+}
+
+.footer{
+  background-color: hsla(0, 0%, 98%, 0);
+}
+.box{
+  background: linear-gradient(-45deg, #c7a40b, #e73c7e, #23a6d5, #23d5ab, rgb(189, 189, 6));
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	
+}
+.box label{
+  color: white;
+}

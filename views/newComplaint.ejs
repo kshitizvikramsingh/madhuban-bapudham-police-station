@@ -1,0 +1,47 @@
+<%- include ("./partials/header.ejs") %>
+</head>
+<body>
+    <h1 class="title">Please See all the Complaints below:</h1>
+    <div class="container is-max-desktop">
+        <div class="notification is-primary">
+            <div class="table-container">
+                <table class="table is-hoverable is-striped">
+                    <thead>
+                        <tr>
+                        <td>ID</td>
+                        <td>Name</td>
+                        <td>Mobile</td>
+                        <td>address</td>
+                        <td>complaint</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+               
+        </div>
+      </div>
+    
+    <h2><% for(let data of complaints){  %>
+        
+            
+<tr>
+    <td> <%=data._id%></td>
+    <td> <%=data.name%></td>
+    <td> <%=data.mobile%></td>
+    <td> <%=data.address%></td>
+    <td> <%=data.complaint%></td>
+</tr>
+           
+        
+                   
+            
+        
+     
+       <%} %>
+    
+</tbody>
+</table>
+</div>
+    </h2>
+
+
+</body>
