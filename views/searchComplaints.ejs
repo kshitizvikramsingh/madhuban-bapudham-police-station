@@ -1,0 +1,57 @@
+<%- include ("./partials/header.ejs") %>
+<link rel="stylesheet" href="/css/editcomplaints.css">
+</head>
+<body>
+    <form>
+        <label class="label">Enter the ID of the complaint you want to modify</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Text input" name="_id">
+        </div>
+      
+
+      <div class="control">
+        <button class="button is-primary">Confirm Entry</button>
+      </div>
+    </form>
+
+    <div id="info">
+      <% if (target=== undefined) { %>
+        <p> Not Allowed </p>
+        <%} else { %>
+          <p> <%=target.name%> </p>
+        <p> <%=target.mobile%> </p>
+        <p> <%=target.address%> </p>
+        
+        <% } %>
+    </div>
+    
+    <div class="dropdown is-hoverable">
+      <div class="dropdown-trigger">
+        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+          <span>Modifications List</span>
+          <span class="icon is-small">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          </span>
+        </button>
+      </div>
+      <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+        <div class="dropdown-content">
+          <div class="dropdown-item">
+            <p>You can insert or modify <strong>any type of content</strong> as per the drop down</p>
+            <div class="dropdown-content">
+              <a href="#" class="dropdown-item">
+                Modify Name
+              </a>
+              <a href="#" class="dropdown-item">
+                Modify mobile
+              </a>
+              <a href="#" class="dropdown-item">
+                Modify Address
+              </a>
+             
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+       

@@ -2,12 +2,14 @@ const express= require("express")
 const ejs= require("ejs")
 const path=require("path")
 const mongoose = require('mongoose');
+
 const Complaint=require("./models/complaints.js")
-
-
-
-
+const complaintRoutes=require("./routes/complaintsRouter.js");
+const { ObjectId,bson } = require("mongodb");
 const app=express()
+
+
+app.use("/complaints",complaintRoutes)
 
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true }))
@@ -32,7 +34,7 @@ app.use(express.static(public))
 app.get("/",(req,res)=>{
     res.render("home.ejs")
 })
-app.post("/newComplaint",async(req,res)=>{
+app.post("/allComplaints",async(req,res)=>{
     let name= req.body.Name
     let mobile=req.body.mobile
     let address=req.body.address
@@ -40,20 +42,28 @@ app.post("/newComplaint",async(req,res)=>{
     
     const newComplaint= new Complaint({name,mobile,address,complaint})
     await newComplaint.save().then(
-        res.redirect("/newComplaint")
+        res.redirect("/complaints")
     )
     .catch((err)=>{
         console.log("Error is :"+err)
     }) 
 })
 
-app.get("/newComplaint",async(req,res)=>{
-    const complaints=await Complaint.find({})
-    console.log(complaints);
-   
-    res.render("newComplaint.ejs",{complaints})
+app.get("/searchComplaints",async(req,res)=>{
+    
+    if(req.query._id){
+        console.log(req.query)
+        const id=req.query
+       const target=await Complaint.findById(id).exec();
+        console.log(target)
+        res.render("searchComplaints.ejs",{target})
+    }else {
+        target= undefined
+        res.render("searchComplaints.ejs",{target})
+    }
+    
+    
 })
-
 
 
 
