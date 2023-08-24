@@ -4,9 +4,16 @@ const Complaint=require("../models/complaints.js")
 const router = express.Router()
 
 router.get("/",async(req,res)=>{
-    const complaints=await Complaint.find({})
-    console.log(complaints);
-    res.render("allComplaints.ejs",{complaints})
+    if(req.query.code){
+        const complaints=await Complaint.find({})
+        console.log(complaints);
+        res.render("allComplaints.ejs",{complaints})
+
+    }
+    else{
+        res.send("Please login to view this page")
+    }
+   
 })
 
 router.get("/edit",async(req,res)=>{

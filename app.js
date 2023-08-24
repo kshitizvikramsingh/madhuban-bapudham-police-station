@@ -35,18 +35,25 @@ app.get("/",(req,res)=>{
     res.render("home.ejs")
 })
 app.post("/allComplaints",async(req,res)=>{
-    let name= req.body.Name
-    let mobile=req.body.mobile
-    let address=req.body.address
-    let complaint=req.body.complaint
     
-    const newComplaint= new Complaint({name,mobile,address,complaint})
-    await newComplaint.save().then(
-        res.redirect("/complaints")
-    )
-    .catch((err)=>{
-        console.log("Error is :"+err)
-    }) 
+   
+        let name= req.body.Name
+        let mobile=req.body.mobile
+        let address=req.body.address
+        let complaint=req.body.complaint
+        
+        const newComplaint= new Complaint({name,mobile,address,complaint})
+        await newComplaint.save().then(
+            res.redirect("/complaints")
+        )
+        .catch((err)=>{
+            console.log("Error is :"+err)
+        }) 
+    
+    
+    
+    
+    
 })
 
 app.get("/searchComplaints",async(req,res)=>{
